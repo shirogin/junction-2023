@@ -14,11 +14,11 @@ const onBoarding1 = {
 const OnBoarding = () => {
 	const [onBoarding, setOnBoarding] = useState("hidden");
 	return (
-		<div className="min-h-screen bg-base-200 flex flex-col w-full justify-center ">
+		<div className="h-screen flex flex-col w-full justify-center ">
 			<div className="md:card mx-auto max-w-2xl  md:shadow-xl px-4 md:my-20 w-full h-full md:bg-base-100 overflow-x-hidden overflow-y-auto">
 				<div className="md:py-24 px-10 flex flex-col text-center justify-center h-full ">
 					<Logo />
-					<div className="flex flex-col items-center justify-center gap-8 w-full ">
+					<div className="flex flex-col items-center justify-center w-full ">
 						<div className={`w-96 h-96 relative`}>
 							<motion.img variants={onBoarding1} animate={onBoarding} className="w-96 absolute" src="/login.png" alt="" />
 							<motion.img
