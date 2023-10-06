@@ -95,7 +95,7 @@ const Panel = () => {
 						></div>
 						<h2 className="card-title">Recent Senders</h2>
 						<ClientsRow Clients={RecentSenders} />
-						<h2 className="card-title">Recent Transfers</h2>
+						<h2 className="card-title">Transactions</h2>
 					</div>
 				</div>
 			</div>
