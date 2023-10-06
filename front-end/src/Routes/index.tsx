@@ -4,6 +4,7 @@ import { useUser } from "@/hooks";
 import OnBoarding from "@/Pages/OnBoarding";
 import Home from "@/Pages/Home";
 import Auth from "@/Pages/Auth";
+import AppLayout from "@/Layout/AppLayout";
 
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
 
@@ -18,16 +19,8 @@ const Router = () => {
 	return useRoutes([
 		{ index: true, element: <Navigate to={user ? "/app" : "/onboarding"} /> },
 		{
-			path: "/onboarding",
-			element: <OnBoarding />,
-		},
-		{
-			path: "/auth",
-			element: <Auth />,
-		},
-		{
-			path: "/app",
-			element: user && user._id ? <Layout /> : <Navigate to="/login" />,
+			path: "app",
+			element: user && user._id ? <AppLayout /> : <Navigate to="/login" />,
 			children: [
 				{ path: "", element: <Home /> },
 				{
@@ -37,17 +30,30 @@ const Router = () => {
 				{ path: "*", element: <Error404 /> },
 			],
 		},
-
 		{
-			path: "/login",
-			element: user ? <Navigate to="/app" /> : <LogIn />,
-		},
-		{
-			path: "logout",
-			element: user ? <Logout /> : <Navigate to="/login" />,
-		},
+			path: "/*",
+			element: <Layout />,
+			children: [
+				{
+					path: "onboarding",
+					element: <OnBoarding />,
+				},
+				{
+					path: "auth",
+					element: <Auth />,
+				},
+				{
+					path: "login",
+					element: user ? <Navigate to="/app" /> : <LogIn />,
+				},
+				{
+					path: "logout",
+					element: user ? <Logout /> : <Navigate to="/login" />,
+				},
 
-		{ path: "*", element: <Error404 /> },
+				{ path: "*", element: <Error404 /> },
+			],
+		},
 	]);
 };
 export default Router;

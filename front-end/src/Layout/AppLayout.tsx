@@ -1,12 +1,14 @@
+import useNavbar from "@/hooks/useNavbar";
 import LeftSidebar from "./LeftSidebar";
 import ModalLayout from "./ModalLayout";
 import PageContent from "./PageContent";
 import RightSidebar from "./RightSidebar";
 
-function Layout() {
+function AppLayout() {
+	useNavbar(true);
 	return (
 		<>
-			<div className="drawer lg:drawer-open overflow-hidden w-full h-screen ">
+			<div className="drawer lg:drawer-open overflow-hidden w-full h-screen bg-secondary text-secondary-content">
 				<input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
 				<PageContent />
 				<LeftSidebar />
@@ -20,4 +22,4 @@ function Layout() {
 	);
 }
 
-export default Layout;
+export default AppLayout;

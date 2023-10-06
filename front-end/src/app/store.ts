@@ -9,6 +9,7 @@ import modal from "@/app/context/modal";
 import lead from "@/app/context/lead";
 import theme from "@/app/context/theme";
 import desk from "@/app/context/desk";
+import navbar from "@/app/context/navbar";
 import serverNotification from "@/app/context/serverNotification";
 
 // import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -25,7 +26,8 @@ export const store = configureStore({
 		lead,
 		theme,
 		desk,
-		serverNotification
+		navbar,
+		serverNotification,
 	},
 	middleware: (defaultMiddleware) => defaultMiddleware().concat(Api.middleware),
 });
