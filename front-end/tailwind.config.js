@@ -10,15 +10,8 @@ export default {
 			{
 				"junction-theme": {
 					...themes["[data-theme=acid]"],
-					primary: "#016862",
-					secondary: "#330000",
-					accent: "#FFD100",
-					neutral: "#242424",
-					"base-100": "#ffffff",
-					info: "#3abff8",
-					success: "#00857D",
-					warning: "#fbbd23",
-					error: "#C91A13",
+					primary: "#0F1336",
+					secondary: "#5126E6",
 				},
 			},
 		],

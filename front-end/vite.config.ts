@@ -7,10 +7,10 @@ const manifest: Partial<VitePWAOptions> = {
 	registerType: "prompt",
 	includeAssets: ["logo.svg", "favicon.ico", "logo16.png", "logo64.png", "logo192.png", "logo512.png"],
 	manifest: {
-		id: "ups-manager",
-		short_name: "UPS_MANAGER",
-		name: "UPS - Manager",
-		description: "UPS app to manage Cash on delivery, clients, and delivery man.",
+		id: "DiNAR",
+		short_name: "DiNAR",
+		name: "DiNAR",
+		description: "DiNAR app to manage Cash and to spend more reasonably.",
 		icons: [
 			{
 				src: "/logo.svg",
@@ -45,7 +45,7 @@ const manifest: Partial<VitePWAOptions> = {
 		],
 		start_url: "/",
 		scope: "/",
-		orientation: "landscape-secondary",
+		orientation: "portrait-primary",
 		display_override: ["window-control-overlay", "minimal-ui"],
 		prefer_related_applications: true,
 		display: "standalone",
@@ -61,9 +61,9 @@ export default defineConfig({
 		alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
 	},
 	server: {
-		port: 3100,
+		port: 3130,
 	},
 	preview: {
-		port: 3100,
+		port: 3130,
 	},
 });

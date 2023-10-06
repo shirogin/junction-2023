@@ -1,8 +1,8 @@
 {
-	"id": "ups-manager",
-	"short_name": "UPS_MANAGER",
-	"name": "UPS - Manager",
-	"description": "UPS app to manage Cash on delivery, clients, and delivery man.",
+	"id": "DiNAR",
+	"short_name": "DiNAR",
+	"name": "DiNAR",
+	"description": "DiNAR app to manage Cash and to spend more reasonably.",
 	"icons": [
 		{
 			"src": "/logo.svg",
@@ -37,7 +37,7 @@
 	],
 	"start_url": "/",
 	"scope": "/",
-	"orientation": "landscape-secondary",
+	"orientation": "portrait-primary",
 	"display_override": [
 		"window-control-overlay",
 		"minimal-ui"
