@@ -18,7 +18,7 @@ function PageContent() {
 	}, []);
 
 	return (
-		<div className="drawer-content  flex flex-col h-[100vh]">
+		<div className="drawer-content  overflow-hidden flex flex-col h-[100vh]">
 			<Header />
 			<main className="lg:px-10 overflow-auto flex-1 overflow-y-auto pt-8  h-full flex flex-col">
 				<Suspense fallback={<SuspenseContent />}>
