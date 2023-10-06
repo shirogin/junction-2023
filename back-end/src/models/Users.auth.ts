@@ -24,7 +24,7 @@ export const SignIn = async (req: Request, res: Response, next: NextFunction) =>
 					return ErrorResponse(res, HttpCodes.Unauthorized.code, msg);
 				}
 				const token = Sign({ _id: user._id.toString() });
-
+				res.cookie("token", token, getCookiesSettings(stay));
 				const resp: ICode<IAuthLogs> = authLogs.LOGIN_SUCCESS;
 				const msg = formatString(resp.message, user);
 				authLogger.info(msg, { type: resp.type });
