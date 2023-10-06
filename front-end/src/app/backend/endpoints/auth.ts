@@ -4,7 +4,7 @@ import { BuilderI } from "@/types/redux";
 export default function auth(builder: BuilderI) {
 	return {
 		/* Sign In */
-		signIn: builder.mutation<ResponseI<AdminI>, UserAuthI>({
+		signIn: builder.mutation<ResponseI<UserI>, UserAuthI>({
 			query: (userAuth) => ({
 				url: "/auth/login",
 				method: "POST",
@@ -27,7 +27,7 @@ export default function auth(builder: BuilderI) {
 			}),
 		}),
 		/* Get User Data */
-		getUserData: builder.mutation<ResponseI<AdminI>, void>({
+		getUserData: builder.mutation<ResponseI<UserI>, void>({
 			query: () => ({ url: "/auth", method: "GET" }),
 		}),
 		/* Edit User Data */

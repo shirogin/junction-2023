@@ -2,18 +2,15 @@ import { useLogOutMutation } from "@/app/backend/export/auth";
 import { useUser } from "@/hooks";
 import { useEffect } from "react";
 import { Copyright } from "@/Components/Copyright";
-import useStoreDesk from "@/hooks/useStoreDesk";
 
 const Logout = () => {
 	const { removeUser } = useUser();
-	const { removeDesk } = useStoreDesk();
 	const [Logout] = useLogOutMutation();
 	useEffect(() => {
 		Logout()
 			.unwrap()
 			.then(() => {
 				removeUser();
-				removeDesk();
 			})
 			.catch(console.error);
 		// eslint-disable-next-line react-hooks/exhaustive-deps

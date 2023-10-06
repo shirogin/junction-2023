@@ -1,36 +1,15 @@
 //import BellIcon from "@heroicons/react/24/outline/BellIcon";
 import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
-import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
-import SunIcon from "@heroicons/react/24/outline/SunIcon";
 //import { openRightDrawer } from "@/app/context/rightDrawer";
 //import { RIGHT_DRAWER_TYPES } from "@/utils/globalConstantUtil";
-import { /* useAppDispatch, */ useAppSelector, useTheme, useUser } from "@/hooks";
+import { /* useAppDispatch, */ useAppSelector, useUser } from "@/hooks";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@/icons/LogoutIcon";
 import { ProfileCircle } from "iconsax-react";
-
-function ThemeToggle() {
-	const { setTheme, theme } = useTheme();
-
-	/* Light and dark theme selection toggle **/
-	return (
-		<label
-			className="swap "
-			onClick={(e) => {
-				e.preventDefault();
-				setTheme(theme === "luxury" ? "UPS-theme" : "luxury");
-				return false;
-			}}
-		>
-			<input type="checkbox" id="darkModeSwitcher" />
-			<SunIcon className={"fill-current w-6 h-6 " + (theme === "luxury" ? "swap-on" : "swap-off")} />
-			<MoonIcon className={"fill-current w-6 h-6 " + (theme === "UPS-theme" ? "swap-on" : "swap-off")} />
-		</label>
-	);
-}
+import { Notifications } from "./Notifications";
 function Header() {
-	const { /* noOfNotifications, */ pageTitle } = useAppSelector((state) => state.header);
-	const { user } = useUser<AdminI>();
+	const {  pageTitle } = useAppSelector((state) => state.header);
+	const { user } = useUser<UserI>();
 
 	return (
 		<>
@@ -44,17 +23,10 @@ function Header() {
 				</div>
 
 				<div className="order-last">
-					<ThemeToggle />
+					{/* <ThemeToggle /> */}
 
 					{/* Notification icon */}
-					{/* <button className="btn btn-ghost ml-4  btn-circle" onClick={() => openNotification()}>
-						<div className="indicator">
-							<BellIcon className="h-6 w-6" />
-							{noOfNotifications > 0 ? (
-								<span className="indicator-item badge badge-secondary badge-sm">{noOfNotifications}</span>
-							) : null}
-						</div>
-					</button> */}
+					<Notifications/>
 
 					{/* Profile icon, opening menu on click */}
 					<div className="dropdown dropdown-end ml-4">

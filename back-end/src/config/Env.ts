@@ -131,10 +131,6 @@ export const EmailHost = CheckEnv("BACK_EmailHost", "smtp.mailgun.org");
  */
 export const EmailContact = CheckEnv("BACK_EmailContact", "madadiyoucef@outlook.com");
 
-//export const MAILGUN_API_KEY = CheckEnv("MAILGUN_API_KEY", "");
-//export const MAILGUN_DOMAIN = CheckEnv("MAILGUN_DOMAIN", "sandboxe3abf25a038c4eb7b1986c9f737c4f5b.mailgun.org");
-//export const EmailUser = CheckEnv("EmailUser", "mail@ups-algerie.com");
-
 /**
  * @description The root directory where log files are stored.
  * @default value path.join(CWD, "logs")

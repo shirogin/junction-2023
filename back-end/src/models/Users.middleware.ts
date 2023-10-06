@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 
-import { ErrorResponse } from "../utils/Response.js";
-import { HttpCodes } from "../config/Errors.js";
-import authLogs from "./Users.logs.js";
-import { Verify } from "../functions/jwt.js";
-import usersModel from "./Users.js";
-import { UserD } from "./Users.js";
+import { ErrorResponse } from "../utils/Response";
+import { HttpCodes } from "../config/Errors";
+import authLogs from "./Users.logs";
+import { Verify } from "../functions/jwt";
+import usersModel from "./Users";
+import { MyRequest } from "../types/Express";
 export function clearToken(tokenName: string, res: Response) {
 	res.cookie(tokenName, "", {
 		sameSite: "none",
@@ -19,7 +19,7 @@ function extractAuth(req: Request) {
 	return req.cookies.token;
 }
 
-export const checkLogs = async (req: Request & { user: null | UserD }, res: Response, next: NextFunction) => {
+export const checkLogs = async (req: MyRequest, res: Response, next: NextFunction) => {
 	const token = extractAuth(req);
 
 	// TODO : ADD The access to the device ID
@@ -29,16 +29,16 @@ export const checkLogs = async (req: Request & { user: null | UserD }, res: Resp
 	if (token) {
 		try {
 			const payload = Verify(token);
-			if (!payload || !payload._id || !payload.kind)
+			if (!payload || !payload._id)
 				return ErrorResponse(
 					res,
 					HttpCodes.Unauthorized.code,
 					authLogs.ERROR_WHILE_CHECKING_CREDENTIALS.message,
 					authLogs.ERROR_WHILE_CHECKING_CREDENTIALS
 				);
-			const { _id, kind } = payload;
+			const { _id } = payload;
 
-			const user = await usersModel.findOne({ _id, kind }).select({ password: 0 });
+			const user = await usersModel.findOne({ _id }).select({ password: 0 });
 			if (!user) {
 				// TODO : Log details for security
 				return ErrorResponse(
@@ -60,7 +60,7 @@ export const checkLogs = async (req: Request & { user: null | UserD }, res: Resp
 	return next();
 };
 
-export const isLoggedIn = (req: Request & { user: null | UserD }, res: Response, next: NextFunction) => {
+export const isLoggedIn = (req: MyRequest, res: Response, next: NextFunction) => {
 	if (req.user) {
 		if (req.user.enabled) return next();
 		return ErrorResponse(res, HttpCodes.Unauthorized.code, authLogs.USER_ISN_T_ENABLED.message, authLogs.USER_ISN_T_ENABLED);

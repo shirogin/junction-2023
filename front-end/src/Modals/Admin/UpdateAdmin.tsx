@@ -4,7 +4,7 @@ import { Input } from "@/Components/Input";
 import { useNotification } from "@/hooks";
 import { useUpdateAdminMutation } from "@/app/backend/export/admin";
 
-const inputs: InputRequiredFields<AdminI>[] = [
+const inputs: InputRequiredFields<UserI>[] = [
 	{
 		required: true,
 		type: "text",
@@ -43,11 +43,11 @@ const inputs: InputRequiredFields<AdminI>[] = [
 	},
 ];
 
-export default function UpdateAdmin({ admin: { _id, ...data } }: { admin: AdminI }) {
+export default function UpdateAdmin({ admin: { _id, ...data } }: { admin: UserI }) {
 	const [UpdateAdmin, { isLoading }] = useUpdateAdminMutation();
 	const { Notify, Errofy } = useNotification();
 
-	const formik = useFormik<Partial<AdminI>>({
+	const formik = useFormik<Partial<UserI>>({
 		initialValues: {
 			...data,
 			/* password: "",
@@ -61,7 +61,7 @@ export default function UpdateAdmin({ admin: { _id, ...data } }: { admin: AdminI
 		}),
 		validateOnChange: true,
 		onSubmit: (body) => {
-			UpdateAdmin({ adminId: _id, data: body })
+			UpdateAdmin({ UserId: _id, data: body })
 				.unwrap()
 				.then((response) => {
 					const user = response.data;

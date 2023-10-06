@@ -1,6 +1,6 @@
 import { Model, Schema, model, Document, Types } from "mongoose";
 import bcrypt from "bcrypt";
-import { validateEmail } from "../functions/index.js";
+import { validateEmail } from "../functions/index";
 
 const required = true;
 export interface UserI extends UserAuthI {
@@ -19,10 +19,10 @@ export interface UserI extends UserAuthI {
 		country: string;
 	};
 	Accounts: {
-		Current: Types.ObjectId;
-		Savings: Types.ObjectId;
-		Investment: Types.ObjectId;
-		TermDeposit: Types.ObjectId;
+		Current?: Types.ObjectId;
+		Savings?: Types.ObjectId;
+		Investment?: Types.ObjectId;
+		TermDeposit?: Types.ObjectId;
 	};
 }
 export interface UserD extends Document<UserI>, UserI {
@@ -83,7 +83,6 @@ const usersSchema = new Schema<UserI>(
 	},
 	{
 		timestamps: true,
-		discriminatorKey: "kind",
 	}
 );
 
@@ -121,3 +120,22 @@ usersSchema.methods.comparePasswords = async function (candidatePassword: string
 };
 const usersModel = model<UserI, UserModel>("Users", usersSchema);
 export default usersModel;
+/* const user: UserI = {
+	email: "madadiyoucef@live.fr",
+	username: "dinarUser",
+	password: "12345678",
+	firstName: "Youcef",
+	lastName: "Madadi",
+	phoneNumber: "0699999999",
+	dateOfBirth: new Date(),
+	enabled: true,
+	deviceTokens: [],
+	address: {
+		street: "Rue de la ",
+		city: "Paris",
+		postalCode: "75000",
+		country: "France",
+	},
+	Accounts: {},
+};
+usersModel.create(user); */

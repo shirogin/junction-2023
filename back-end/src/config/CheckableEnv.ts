@@ -1,7 +1,7 @@
-import { EnvEmitter } from "../utils/Events.js";
-import { exitProcess } from "../utils/Process.js";
-import { InDev } from "./Env.js";
-import { ExitCodes } from "./Errors.js";
+import { EnvEmitter } from "../utils/Events";
+import { exitProcess } from "../utils/Process";
+import { InDev } from "./Env";
+import { ExitCodes } from "./Errors";
 export function CheckEnv(Env_Field: string, exitCode: ICode) {
 	if (!process.env[Env_Field]) {
 		console.log(`🔴 Failed on loading env field => '${Env_Field}'`);

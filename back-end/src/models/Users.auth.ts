@@ -1,14 +1,15 @@
 import { NextFunction, Request, Response } from "express";
-import usersModel, { UserD } from "./Users.js";
+import usersModel, { UserD } from "./Users";
 
-import { getCookiesSettings, isMobileRequest } from "../functions/index.js";
-import { Sign } from "../functions/jwt.js";
-import authLogs, { IAuthLogs, authLogger } from "./Users.logs.js";
-import { formatString } from "../utils/Strings.js";
-import { ErrorResponse, SuccessResponse } from "../utils/Response.js";
-import { HttpCodes } from "../config/Errors.js";
+import { getCookiesSettings, isMobileRequest } from "../functions/index";
+import { Sign } from "../functions/jwt";
+import authLogs, { IAuthLogs, authLogger } from "./Users.logs";
+import { formatString } from "../utils/Strings";
+import { ErrorResponse, SuccessResponse } from "../utils/Response";
+import { HttpCodes } from "../config/Errors";
+import { MyRequest } from "../types/Express";
 
-export const SignIn = async (req: Request & { user: null | UserD }, res: Response, next: NextFunction) => {
+export const SignIn = async (req: Request, res: Response, next: NextFunction) => {
 	const { username, password, stay = false } = req.body;
 
 	try {
@@ -23,7 +24,7 @@ export const SignIn = async (req: Request & { user: null | UserD }, res: Respons
 					return ErrorResponse(res, HttpCodes.Unauthorized.code, msg);
 				}
 				const token = Sign({ _id: user._id.toString() });
-
+				res.cookie("token", token, getCookiesSettings(stay));
 				const resp: ICode<IAuthLogs> = authLogs.LOGIN_SUCCESS;
 				const msg = formatString(resp.message, user);
 				authLogger.info(msg, { type: resp.type });
@@ -51,7 +52,7 @@ export const SignIn = async (req: Request & { user: null | UserD }, res: Respons
 	}
 };
 
-export const Logout = async (req: Request & { user: null | UserD }, res: Response) => {
+export const Logout = async (req: MyRequest, res: Response) => {
 	if (req.headers["user-kind"] === "Admin")
 		res.cookie("adminToken", "", {
 			sameSite: "none",
@@ -71,16 +72,16 @@ export const Logout = async (req: Request & { user: null | UserD }, res: Respons
 	SuccessResponse(res, HttpCodes.OK.code, null, msg);
 };
 
-export const GetUser = async (req: Request & { user: UserD }, res: Response, next: NextFunction) => {
-	const user = req.user;
+export const GetUser = async (req: MyRequest, res: Response, next: NextFunction) => {
+	const user = req.user as UserD;
 
 	const msg = formatString(authLogs.AUTH_BACK.message, user);
 	authLogger.info(msg, { type: authLogs.AUTH_BACK.type });
 
 	return SuccessResponse(res, HttpCodes.Accepted.code, user.Optimize(), msg, authLogs.AUTH_BACK.type);
 };
-export const updateProfile = async (req: Request & { user: UserD }, res: Response) => {
-	const user = req.user;
+export const updateProfile = async (req: MyRequest, res: Response) => {
+	const user = req.user as UserD;
 	const { firstName, lastName, email, phoneNumber } = req.body;
 	try {
 		if (firstName) user.firstName = firstName;

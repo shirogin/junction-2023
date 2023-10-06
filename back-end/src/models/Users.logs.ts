@@ -1,4 +1,4 @@
-import Logger from "../utils/Logger.js";
+import Logger from "../utils/Logger";
 export type IAuthLogs =
 	| "LOGIN_SUCCESS"
 	| "MOBILE_LOGIN_SUCCESS"
