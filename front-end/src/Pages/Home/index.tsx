@@ -16,14 +16,15 @@ export default function Home() {
 			<div className="flex  overflow-x-auto no-scrollbar w-full px-6">
 				{accountsTypes.map((account, i) => (
 					<a
+						key={i}
 						href="#"
 						onClick={(e) => {
 							setCurrentAccount(i);
 							// scroll to the current element show fully
 							e.currentTarget.scrollIntoView({ behavior: "smooth", block: "center" });
 						}}
-						className={`text-white scroll-mx-6 flex-shrink-0 px-6 py-2  rounded-full transition-all  ${
-							currentAccount === i ? "text-black bg-white font-bold" : ""
+						className={` scroll-mx-6 flex-shrink-0 px-6 py-2  rounded-full transition-all  ${
+							currentAccount === i ? "text-black bg-white font-bold" : "text-white"
 						}`}
 					>
 						{account}
