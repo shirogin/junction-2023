@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import OnBoarding from "@/Pages/OnBoarding";
 import Home from "@/Pages/Home";
+import Auth from "@/Pages/Auth";
 
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
 
@@ -19,6 +20,10 @@ const Router = () => {
 		{
 			path: "/onboarding",
 			element: <OnBoarding />,
+		},
+		{
+			path: "/auth",
+			element: <Auth />,
 		},
 		{
 			path: "/app",
