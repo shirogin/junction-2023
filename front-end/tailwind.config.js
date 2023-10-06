@@ -9,7 +9,7 @@ export default {
 		themes: [
 			{
 				"junction-theme": {
-					...themes["[data-theme=winter]"],
+					...themes["[data-theme=acid]"],
 					primary: "#016862",
 					secondary: "#330000",
 					accent: "#FFD100",
