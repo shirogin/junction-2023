@@ -1,5 +1,6 @@
 import Page from "@/Components/Page";
 import FaceScan from "@/Components/FaceScan";
+import VerificationProgressBar from "@/Components/VerificationProgressBar";
 
 const AuthVerification = () => {
   return (
@@ -22,6 +23,7 @@ const AuthVerification = () => {
     >
       <div className="w-full h-[40%]">
         <FaceScan />
+        <VerificationProgressBar />
       </div>
     </Page>
   );
