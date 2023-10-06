@@ -11,7 +11,7 @@ const PinCode: React.FC<PinProps> = ({ targetCode }) => {
 	const { code, pressKey, reset, isError } = useKeypad(targetCode.length);
   
 	return (
-	  <div className="p-8">
+	  <div>
 		<Dots complete={code.length} length={targetCode.length} isError={isError} />
 		<NumberPad pressKey={pressKey} reset={reset} />
 	  </div>
