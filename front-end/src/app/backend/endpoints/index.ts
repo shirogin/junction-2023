@@ -1,14 +1,3 @@
 export { default as auth } from "./auth";
-export { default as integration } from "./integration";
-export { default as client } from "./client";
-export { default as admin } from "./admin";
-export { default as deliveryMan } from "./deliveryMan";
-export { default as desk } from "./desk";
-export { default as shipments } from "./shipments";
-export { default as role } from "./role";
-export { default as payment } from "./payment";
-export { default as product } from "./product";
 export { default as tools } from "./tools";
-export { default as moneyCollection } from "./moneyCollection";
-export { default as transactions } from "./transactions";
 //export { default as user } from "./user";

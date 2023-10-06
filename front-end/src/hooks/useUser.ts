@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from "./redux";
 import { removeUser, setUser } from "../app/context/user";
 
-function useUser<T extends AdminI | null = AdminI | null>() {
+function useUser<T extends UserI | null = UserI | null>() {
 	const dispatch = useAppDispatch(),
 		user = useAppSelector((state) => state.user) as T,
-		set = (user: AdminI) => {
+		set = (user: UserI) => {
 			dispatch(setUser(user));
 		},
 		remove = () => {

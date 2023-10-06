@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
-import useStoreDesk from "@/hooks/useStoreDesk";
 import OnBoarding from "@/Pages/OnBoarding";
 
 const SentMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Sent"));
@@ -21,11 +20,8 @@ const Dashboard = lazy(() => import("@/Pages/protected/Dashboard"));
 
 const Welcome = lazy(() => import("@/Pages/protected/Welcome"));
 
-const SelectDesk = lazy(() => import("@/Pages/SelectDesk"));
-
 const Router = () => {
 	const { user } = useUser();
-	const { currentDesk } = useStoreDesk();
 	return useRoutes([
 		{ index: true, element: <Navigate to="/login" /> },
 		{
@@ -43,7 +39,7 @@ const Router = () => {
 		},
 		{
 			path: "/app",
-			element: user ? currentDesk !== "" ? <Layout /> : <SelectDesk /> : <Navigate to="/login" />,
+			element: user && user._id ? <Layout /> : <Navigate to="/login" />,
 			children: [
 				{ path: "", element: <Welcome /> },
 				{
@@ -68,7 +64,7 @@ const Router = () => {
 		},
 		{
 			path: "/onboarding",
-			element:  <OnBoarding />,
+			element: <OnBoarding />,
 		},
 		{
 			path: "/login",
