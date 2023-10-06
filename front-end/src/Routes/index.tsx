@@ -2,7 +2,6 @@ import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import useStoreDesk from "@/hooks/useStoreDesk";
-import AdminDetail from "@/Pages/Admin/AdminDetail";
 import OnBoarding from "@/Pages/OnBoarding";
 
 const SentMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Sent"));
@@ -50,6 +49,18 @@ const Router = () => {
 				{
 					path: "dashboard", // the url
 					element: <Dashboard />,
+				},
+				{
+					path: "dashboard", // the url
+					element: <SentMoneyCollections />,
+				},
+				{
+					path: "dashboard", // the url
+					element: <ReceivedMoneyCollections />,
+				},
+				{
+					path: "dashboard", // the url
+					element: <ToBeReceivedMoneyCollections />,
 				},
 
 				{ path: "*", element: <Error404 /> },
