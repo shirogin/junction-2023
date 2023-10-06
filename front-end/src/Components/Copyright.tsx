@@ -4,7 +4,7 @@ export function Copyright() {
 			<p className=" mt-10 mb-4">
 				{"Made with ❤️ ©"}
 				<a color="inherit" href="https://in-verse.com/">
-					Inverse
+					Retirees
 				</a>{" "}
 				{new Date().getFullYear()}
 				{"."}

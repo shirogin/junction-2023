@@ -4,7 +4,7 @@ declare interface UpdateFormValue {
 }
 type InputRequiredFields<T> = {
 	name: keyof T;
-	label: string;
+	label?: string;
 	placeholder: string;
 	type?: string;
 	[key: string]: unknown;

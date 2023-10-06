@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import useStoreDesk from "@/hooks/useStoreDesk";
 import AdminDetail from "@/Pages/Admin/AdminDetail";
+import OnBoarding from "@/Pages/OnBoarding";
 
 const SentMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Sent"));
 const ReceivedMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Received"));
@@ -301,6 +302,10 @@ const Router = () => {
 
 				{ path: "*", element: <Error404 /> },
 			],
+		},
+		{
+			path: "/onboarding",
+			element:  <OnBoarding />,
 		},
 		{
 			path: "/login",
