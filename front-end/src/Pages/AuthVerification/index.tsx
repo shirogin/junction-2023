@@ -17,7 +17,7 @@ const AuthVerification = () => {
     //   </div>
     // </div>
     <Page
-      icon="/public/3d-casual-life-face-scan 1.png"
+      icon="/3d-casual-life-face-scan 1.png"
       title="Scanning face"
       subtitle="Scan your face by position it right in the face frames"
     >
