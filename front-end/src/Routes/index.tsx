@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import OnBoarding from "@/Pages/OnBoarding";
+import Home from "@/Pages/Home";
 
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
 
@@ -10,8 +11,6 @@ const Logout = lazy(() => import("@/Pages/Logout"));
 const LogIn = lazy(() => import("@/Pages/LogIn"));
 
 const Dashboard = lazy(() => import("@/Pages/protected/Dashboard"));
-
-const Welcome = lazy(() => import("@/Pages/protected/Welcome"));
 
 const Router = () => {
 	const { user } = useUser();
@@ -25,7 +24,7 @@ const Router = () => {
 			path: "/app",
 			element: user && user._id ? <Layout /> : <Navigate to="/login" />,
 			children: [
-				{ path: "", element: <Welcome /> },
+				{ path: "", element: <Home /> },
 				{
 					path: "dashboard", // the url
 					element: <Dashboard />,

@@ -14,13 +14,25 @@ type InputI = {
 	icon?: React.ReactNode;
 	[key: string]: unknown;
 };
-export function Input({ label, className = "", inputClassName = "", type: defaultType, placeholder, props,icon, error, ...moreProps }: InputI) {
+export function Input({
+	label,
+	className = "",
+	inputClassName = "",
+	type: defaultType,
+	placeholder,
+	props,
+	icon,
+	error,
+	...moreProps
+}: InputI) {
 	const [inputType, setInputType] = useState(defaultType === "password" ? "password" : defaultType);
 	return (
 		<div className={`form-control w-full  ${className}`}>
-			{label && <label className="label">
-				<span className="label-text font-bold">{label}</span>
-			</label>}
+			{label && (
+				<label className="label">
+					<span className="label-text font-bold">{label}</span>
+				</label>
+			)}
 			<div className="relative">
 				<input
 					type={inputType}
@@ -37,11 +49,13 @@ export function Input({ label, className = "", inputClassName = "", type: defaul
 							setInputType((i) => (i === "password" ? "text" : "password"));
 						}}
 					>
-						<EyeIcon className="w-4 h-4" />
+						<EyeIcon className="w-5 h-5" />
 					</button>
-				): (icon ? <div className="absolute right-0 top-0 translate-y-full -translate-x-full">
-					{icon}
-				</div> : "" )}
+				) : icon ? (
+					<div className="absolute right-0 top-0 translate-y-2/3 -translate-x-2/3">{icon}</div>
+				) : (
+					""
+				)}
 			</div>
 			<label className="label">
 				<span className={`label-text-alt text-error ${error ? "" : "h-0"}`}>{error ? error : undefined}</span>

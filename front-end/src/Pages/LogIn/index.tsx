@@ -22,7 +22,7 @@ const inputs: InputRequiredFields<UserAuthI>[] = [
 		inputClassName: "md:max-w-md",
 		autoComplete: "username",
 		autoFocus: true,
-		icon: <Profile className="w-4 h-4" />,
+		icon: <Profile className="w-5 h-5" />,
 	},
 	{
 		required: true,
@@ -79,21 +79,21 @@ function Login() {
 
 	const { errors, touched, getFieldProps, handleSubmit } = formik;
 
-    return (
-        <div className="min-h-screen bg-base-200 flex flex-col w-full">
-            <div className="md:card mx-auto w-full max-w-5xl  md:shadow-xl md:mt-40 px-4 h-full">
-                <div className="grid  md:grid-cols-2 grid-cols-1  md:bg-base-100 rounded-xl h-full ">
-                    <div className="hidden md:block">
-                        <LandingIntro />
-                    </div>
-                    <div className="md:py-24 px-10 flex flex-col gap-6 h-full justify-center mt-12">
-                        <Logo />
-                        <div className="flex mt-12 gap-4">
-                            <h1 className="text-3xl font-bold">Login to your profile </h1>
-                            <div>
-                                <img src="/public/3d-fluency-hand-with-pen-writing 1.png" />
-                            </div>
-                        </div>
+	return (
+		<div className="min-h-screen bg-base-200 flex flex-col w-full">
+			<div className="md:card mx-auto w-full max-w-5xl  md:shadow-xl md:mt-40 px-4 h-full">
+				<div className="grid  md:grid-cols-2 grid-cols-1  md:bg-base-100 rounded-xl h-full ">
+					<div className="hidden md:block">
+						<LandingIntro />
+					</div>
+					<div className="md:py-24 px-10 flex flex-col gap-6 h-full justify-center mt-12">
+						<Logo />
+						<div className="flex mt-12 gap-4">
+							<h1 className="text-3xl font-bold">Login to your profile </h1>
+							<div>
+								<img src="/public/3d-fluency-hand-with-pen-writing 1.png" />
+							</div>
+						</div>
 
 						<p className="">Access to your account so you can manage your money even faster</p>
 
@@ -129,7 +129,7 @@ function Login() {
 									</div>
 								</div>
 
-								<div className="mt-8">
+								<div className="mt-8 mb-12">
 									<button type="submit" className="btn btn-primary mt-auto w-full " disabled={isLoading}>
 										{isLoading ? (
 											<>

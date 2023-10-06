@@ -3,6 +3,7 @@
 @tailwind utilities;
 #root {
 	display: flex;
+	font-family: "Poppins", sans-serif;
 }
 /*-------------------------- scrollbar --------------------------*/
 ::-webkit-scrollbar {
@@ -32,5 +33,20 @@
 		-webkit-appearance: none;
 		margin: 0;
 		-moz-appearance: textfield !important;
+	}
+}
+
+@layer utilities {
+	@variants responsive {
+		/* Hide scrollbar for Chrome, Safari and Opera */
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+
+		/* Hide scrollbar for IE, Edge and Firefox */
+		.no-scrollbar {
+			-ms-overflow-style: none; /* IE and Edge */
+			scrollbar-width: none; /* Firefox */
+		}
 	}
 }

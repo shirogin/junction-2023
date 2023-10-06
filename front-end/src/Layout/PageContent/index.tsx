@@ -18,15 +18,14 @@ function PageContent() {
 	}, []);
 
 	return (
-		<div className="drawer-content bg-base-200 flex flex-col h-[100vh]">
+		<div className="drawer-content  flex flex-col h-[100vh]">
 			<Header />
-			<main className="lg:px-10 overflow-auto flex-1 overflow-y-auto pt-8 px-6 bg-base-200 h-full flex flex-col">
+			<main className="lg:px-10 overflow-auto flex-1 overflow-y-auto pt-8  h-full flex flex-col">
 				<Suspense fallback={<SuspenseContent />}>
 					<Outlet />
 				</Suspense>
 				<Copyright />
 			</main>
-			<Header />
 		</div>
 	);
 }
