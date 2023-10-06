@@ -3,13 +3,6 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import OnBoarding from "@/Pages/OnBoarding";
 
-const SentMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Sent"));
-const ReceivedMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/Received"));
-const ToBeReceivedMoneyCollections = lazy(() => import("@/Pages/MoneyCollections/ToBeReceived"));
-
-const ReturnContract = lazy(() => import("@/Pages/Contracts/ReturnContract"));
-const Labels = lazy(() => import("@/Pages/Labels"));
-
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
 
 const Layout = lazy(() => import("@/Layout"));
@@ -24,19 +17,7 @@ const Router = () => {
 	const { user } = useUser();
 	return useRoutes([
 		{ index: true, element: <Navigate to="/login" /> },
-		{
-			path: "/shipments/label",
-			element: <Labels />,
-		},
-		{
-			path: "/contracts/*",
-			children: [
-				{
-					path: "return",
-					element: <ReturnContract />,
-				},
-			],
-		},
+
 		{
 			path: "/app",
 			element: user && user._id ? <Layout /> : <Navigate to="/login" />,
@@ -46,19 +27,6 @@ const Router = () => {
 					path: "dashboard", // the url
 					element: <Dashboard />,
 				},
-				{
-					path: "dashboard", // the url
-					element: <SentMoneyCollections />,
-				},
-				{
-					path: "dashboard", // the url
-					element: <ReceivedMoneyCollections />,
-				},
-				{
-					path: "dashboard", // the url
-					element: <ToBeReceivedMoneyCollections />,
-				},
-
 				{ path: "*", element: <Error404 /> },
 			],
 		},

@@ -15,7 +15,7 @@ function LeftSidebar() {
 	return (
 		<div className="drawer-side ">
 			<label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label>
-			<ul className="menu pt-20 md:pt-2 h-[calc(100vh-4rem)] overflow-auto flex-nowrap w-80 bg-base-100 text-base-content gap-1">
+			<ul className="menu pt-20 md:pt-2 h-[100vh] overflow-auto flex-nowrap w-80 bg-base-100 text-base-content gap-1">
 				<button
 					className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
 					onClick={() => close()}

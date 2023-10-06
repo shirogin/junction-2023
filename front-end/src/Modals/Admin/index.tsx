@@ -1,10 +1,10 @@
 import { useModalI } from "@/hooks/useModal";
 import CreateAdmin from "./CreateAdmin";
 import UpdateAdmin from "./UpdateAdmin";
-function isAdmin(admin: AdminI | object): admin is AdminI {
+function isAdmin(admin: UserI | object): admin is UserI {
 	return "_id" in admin && !!admin._id;
 }
-export default function AdminModal({ modalData, closeModal }: useModalI<AdminI | object>) {
+export default function AdminModal({ modalData, closeModal }: useModalI<UserI | object>) {
 	const { extraObject } = modalData;
 	const admin = isAdmin(extraObject) ? extraObject : null;
 	return (

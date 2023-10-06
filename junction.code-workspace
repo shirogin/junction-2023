@@ -14,7 +14,7 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Copilot Theme - Higher Contrast",
+		"workbench.colorTheme": "Default Dark Modern",
 		"editor.formatOnSave": true,
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true
@@ -70,7 +70,7 @@
 				]
 			}
 		],
-		"cSpell.words": ["heroicons", "mailgun"]
+		"cSpell.words": ["formik", "heroicons", "mailgun"]
 	},
 	"extensions": {
 		"recommendations": [
