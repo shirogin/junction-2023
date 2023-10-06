@@ -3,6 +3,7 @@ import { ArrowRight, ArrowRight2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import useNavbar from "@/hooks/useNavbar";
 const onBoarding1 = {
 		hidden: { x: 0, y: 0 },
 		visible: { x: "-85%", y: "80%", rotate: -90 },
@@ -12,6 +13,7 @@ const onBoarding1 = {
 		visible: { x: 0, y: 0 },
 	};
 const OnBoarding = () => {
+	useNavbar(false);
 	const [onBoarding, setOnBoarding] = useState("hidden");
 	return (
 		<div className="min-h-screen bg-base-200 flex flex-col w-full justify-center ">

@@ -1,18 +1,19 @@
-import LeftSidebar from "./LeftSidebar";
+//import LeftSidebar from "./LeftSidebar";
 import ModalLayout from "./ModalLayout";
 import PageContent from "./PageContent";
-import RightSidebar from "./RightSidebar";
+//import RightSidebar from "./RightSidebar";
 
 function Layout() {
 	return (
 		<>
-			<div className="drawer lg:drawer-open overflow-hidden w-full h-screen ">
-				<input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
+			<div className=" overflow-hidden w-full h-screen ">
+				{/* drawer lg:drawer-open
+                <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" /> */}
 				<PageContent />
-				<LeftSidebar />
+				{/* <LeftSidebar /> */}
 			</div>
 			{/* Right drawer - containing secondary content like notifications list etc.. */}
-			<RightSidebar />
+			{/* <RightSidebar /> */}
 
 			{/* Modal layout container */}
 			<ModalLayout />

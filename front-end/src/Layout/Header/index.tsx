@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 import { Notifications } from "./Notifications";
 import useNavbar from "@/hooks/useNavbar";
 function Header() {
-	const { user } = useUser<UserI>();
+	const { user } = useUser();
 	const { isOpen } = useNavbar();
-	console.log(isOpen);
 	if (!isOpen) return null;
 	return (
 		<>
@@ -29,7 +28,7 @@ function Header() {
 					<div className="flex flex-col">
 						<p className="text-sm">Hello,</p>
 						<p className="font-bold text-white flex gap-2 items-center">
-							{user.firstName} {user.lastName} <img src={"/goodbye.png"} />
+							{user?.firstName} {user?.lastName} <img src={"/goodbye.png"} />
 						</p>
 					</div>
 				</div>

@@ -1,8 +1,10 @@
 import Logo from "@/Components/Logo";
+import useNavbar from "@/hooks/useNavbar";
 import { ArrowRight } from "iconsax-react";
 import { Link } from "react-router-dom";
 
 const OnBoarding2 = () => {
+	useNavbar(false);
 	return (
 		<div className="min-h-screen bg-base-200 flex flex-col w-full justify-center">
 			<div className="md:card mx-auto max-w-2xl  md:shadow-xl px-4 md:my-20 w-full h-full md:bg-base-100 ">

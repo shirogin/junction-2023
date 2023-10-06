@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { useEffect } from "react";
 import SuspenseContent from "./SuspenseContent";
 import Header from "../Header";
-import { Copyright } from "@/Components/Copyright";
 
 function PageContent() {
 	// const { pageTitle } = useAppSelector((state) => state.header);
@@ -20,11 +19,10 @@ function PageContent() {
 	return (
 		<div className="drawer-content  overflow-hidden flex flex-col h-[100vh]">
 			<Header />
-			<main className="lg:px-10 overflow-auto flex-1 overflow-y-auto pt-8  h-full flex flex-col">
+			<main className="lg:px-10 overflow-auto flex-1 overflow-y-auto  h-full flex flex-col relative">
 				<Suspense fallback={<SuspenseContent />}>
 					<Outlet />
 				</Suspense>
-				<Copyright />
 			</main>
 		</div>
 	);
