@@ -1,4 +1,4 @@
-import { JWT_SECRET } from "../config/CheckableEnv.js";
+import { JWT_SECRET } from "../config/CheckableEnv";
 import jwt from "jsonwebtoken";
 
 export const Sign = (payload: MyPayload) => {

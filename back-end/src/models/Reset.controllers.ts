@@ -1,15 +1,16 @@
-import resetModel from "./Reset.js";
-import { SendEmail } from "../utils/Email.js";
-import { ResetEmail } from "../config/Templates.js";
-import { EmailContact, FRONT_URL, MediaURL, PROJECT_Name } from "../config/Env.js";
-import usersModel, { UserD } from "./Users.js";
+import resetModel from "./Reset";
+import { SendEmail } from "../utils/Email";
+import { ResetEmail } from "../config/Templates";
+import { EmailContact, FRONT_URL, MediaURL, PROJECT_Name } from "../config/Env";
+import usersModel, { UserD } from "./Users";
 import { Request, Response } from "express";
-import { ErrorResponse, SuccessResponse } from "../utils/Response.js";
-import { HttpCodes } from "../config/Errors.js";
-import { formatString } from "../utils/Strings.js";
-import authLogs, { authLogger } from "./Users.logs.js";
+import { ErrorResponse, SuccessResponse } from "../utils/Response";
+import { HttpCodes } from "../config/Errors";
+import { formatString } from "../utils/Strings";
+import authLogs, { authLogger } from "./Users.logs";
+import { MyRequest } from "../types/Express";
 // CreateReset sends email to user with a link to reset password
-export const CreateReset = async (req: Request & { user: null | UserD }, res: Response) => {
+export const CreateReset = async (req: MyRequest, res: Response) => {
 	const { email } = req.body;
 	try {
 		const user = await usersModel.findOne({ $or: [{ email }, { username: email }] });
@@ -44,7 +45,7 @@ export const CreateReset = async (req: Request & { user: null | UserD }, res: Re
 };
 
 // check if reset exist
-export const CheckRest = async (req: Request & { user: null | UserD }, res: Response) => {
+export const CheckRest = async (req: MyRequest, res: Response) => {
 	const { resetId } = req.params;
 	try {
 		const reset = await resetModel.findById(resetId);
@@ -62,7 +63,7 @@ export const CheckRest = async (req: Request & { user: null | UserD }, res: Resp
 	}
 };
 // ResetPassword reset user password
-export const ResetPassword = async (req: Request & { user: null | UserD }, res: Response) => {
+export const ResetPassword = async (req: MyRequest, res: Response) => {
 	const { resetId } = req.params;
 	const { password } = req.body;
 	try {

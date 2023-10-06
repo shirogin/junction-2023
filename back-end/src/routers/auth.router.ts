@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { GetUser, Logout, SignIn } from "../models/Users.auth.js";
-import { checkLogs, isLoggedIn } from "../models/Users.middleware.js";
-import { CheckRest, CreateReset, ResetPassword } from "../models/Reset.controllers.js";
+import { GetUser, Logout, SignIn } from "../models/Users.auth";
+import { checkLogs, isLoggedIn } from "../models/Users.middleware";
+import { CheckRest, CreateReset, ResetPassword } from "../models/Reset.controllers";
 
 const authRouter = Router();
 

@@ -1,17 +1,18 @@
 import { Request, Response } from "express";
-import notificationModel, { NotificationI } from "./Notification.js";
-import { ErrorResponse, SuccessResponse } from "../utils/Response.js";
-import { HttpCodes } from "../config/Errors.js";
-import { FCM_ADMIN } from "../settings.js";
-import { UserD } from "./Users.js";
+import notificationModel, { NotificationI } from "./Notification";
+import { ErrorResponse, SuccessResponse } from "../utils/Response";
+import { HttpCodes } from "../config/Errors";
+import { FCM_ADMIN } from "../settings";
+import { UserD } from "./Users";
 import { Types } from "mongoose";
+import { MyRequest } from "../types/Express";
 
 // get notifications for client or DeliveryMan
-export const getNotifications = async (req: Request & { user: UserD }, res: Response) => {
+export const getNotifications = async (req: MyRequest, res: Response) => {
 	try {
 		const limit = Number(req.query.limit) || Infinity;
 		const createdSince = new Date(Number(req.query.createdSince) || 0);
-		const user = req.user;
+		const user = req.user as UserD;
 		const notifications = await notificationModel
 			.find({ user: user._id, createdAt: { $gte: createdSince } })
 			.sort("-createdAt")
@@ -23,9 +24,9 @@ export const getNotifications = async (req: Request & { user: UserD }, res: Resp
 	}
 };
 // create a new notification and send it to a all devices in the deviceTokens array
-export const createNotification = async (req: Request & { user: UserD }, res: Response) => {
+export const createNotification = async (req: MyRequest, res: Response) => {
 	try {
-		const user = req.user;
+		const user = req.user as UserD;
 		const { title, body, type, reference } = req.body;
 		if (user.deviceTokens.length === 0) return ErrorResponse(res, HttpCodes.BadRequest.code, "User has no device tokens.");
 		const notification = await notificationModel.create();
@@ -61,9 +62,9 @@ export async function sendNotifications(deviceTokens: string[], { title, body, t
 	else return Promise.resolve("There is no tokens to send notifications to.");
 }
 // subscribe a device token to a client or DeliveryMan
-export const subscribeNotification = async (req: Request & { user: UserD }, res: Response) => {
+export const subscribeNotification = async (req: MyRequest, res: Response) => {
 	try {
-		const user = req.user;
+		const user = req.user as UserD;
 		const { deviceToken } = req.body;
 		if (user.deviceTokens.includes(deviceToken))
 			return ErrorResponse(res, HttpCodes.AlreadyReported.code, "Device token already subscribed.");
@@ -75,9 +76,9 @@ export const subscribeNotification = async (req: Request & { user: UserD }, res:
 	}
 };
 // unsubscribe a device token from a client or DeliveryMan
-export const unsubscribeNotification = async (req: Request & { user: UserD }, res: Response) => {
+export const unsubscribeNotification = async (req: MyRequest, res: Response) => {
 	try {
-		const user = req.user;
+		const user = req.user as UserD;
 		const { deviceToken } = req.body;
 		if (!user.deviceTokens.includes(deviceToken)) return ErrorResponse(res, HttpCodes.BadRequest.code, "Device token not subscribed.");
 		user.deviceTokens = user.deviceTokens.filter((token) => token !== deviceToken);

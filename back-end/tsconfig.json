@@ -1,11 +1,19 @@
 {
 	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"target": "ESNext",
-		"sourceMap": true,
+		"target": "ES2021",
+		"lib": ["es2021", "dom"],
+		"module": "commonjs",
+		"rootDir": "./src",
+		"baseUrl": "src",
 		"outDir": "./dist",
-		"forceConsistentCasingInFileNames": true
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": false
 	},
-	"include": ["./src/**/*"]
+	"typedocOptions": {
+		"entryPoints": ["src/index.ts"],
+		"out": "docs"
+	},
+	"include": ["src"]
 }

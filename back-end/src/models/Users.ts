@@ -1,6 +1,6 @@
 import { Model, Schema, model, Document, Types } from "mongoose";
 import bcrypt from "bcrypt";
-import { validateEmail } from "../functions/index.js";
+import { validateEmail } from "../functions/index";
 
 const required = true;
 export interface UserI extends UserAuthI {

@@ -6,6 +6,7 @@ import fs from "fs/promises";
 import path from "path";
 import { ErrorResponse, SuccessResponse } from "../utils/Response.js";
 import { HttpCodes } from "../config/Errors.js";
+import { MyFileRequest } from "../types/Express.js";
 
 export const fileStorage = multer.diskStorage({
 	destination: (req, file, callback) => {
@@ -26,7 +27,7 @@ export const fileStorage = multer.diskStorage({
 	},
 });
 
-export const fileFilter = (request: Request, file: multer.File, callback: FileFilterCallback): void => {
+export const fileFilter = (request: Request, file: Express.Multer.File, callback: FileFilterCallback): void => {
 	if (
 		file.mimetype === "image/png" ||
 		file.mimetype === "image/jpg" ||
@@ -39,7 +40,7 @@ export const fileFilter = (request: Request, file: multer.File, callback: FileFi
 	}
 };
 
-export const UploadFile = (req: Request & { file: multer.File }, res: Response) => {
+export const UploadFile = (req: MyFileRequest, res: Response) => {
 	if (!req.file) return ErrorResponse(res, HttpCodes.BadRequest.code, "No file received");
 	return SuccessResponse(
 		res,
