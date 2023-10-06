@@ -69,7 +69,8 @@
 					} */
 				]
 			}
-		]
+		],
+		"cSpell.words": ["heroicons", "mailgun"]
 	},
 	"extensions": {
 		"recommendations": [

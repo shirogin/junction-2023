@@ -131,7 +131,7 @@ export default usersModel;
 	enabled: true,
 	deviceTokens: [],
 	address: {
-		street: "Rue de la paix",
+		street: "Rue de la ",
 		city: "Paris",
 		postalCode: "75000",
 		country: "France",
