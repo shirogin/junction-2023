@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const OnBoarding2 = () => {
 	useNavbar(false);
 	return (
-		<div className="min-h-screen bg-base-200 flex flex-col w-full justify-center">
+		<div className="min-h-screenflex flex-col w-full justify-center">
 			<div className="md:card mx-auto max-w-2xl  md:shadow-xl px-4 md:my-20 w-full h-full md:bg-base-100 ">
 				<div className="md:py-24 px-10 flex flex-col text-center justify-center h-full">
 					<Logo />
