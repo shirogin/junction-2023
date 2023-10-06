@@ -1,10 +1,6 @@
 {
 	"folders": [
 		{
-			"path": ".",
-			"name": "Junction"
-		},
-		{
 			"path": "back-end",
 			"name": "Back end"
 		},
@@ -56,13 +52,13 @@
 					{
 						"profile": "Server",
 						"name": "Back end",
-						"commands": ["cd ./back-end", "npm run dev"],
+						"commands": ["cd ../back-end", "npm run dev"],
 						"waitOnExit": true
 					},
 					{
 						"profile": "Browser",
 						"name": "Front end",
-						"commands": ["cd ./front-end", "npm run dev"],
+						"commands": ["cd ../front-end", "npm run dev"],
 						"waitOnExit": true
 					}
 					/* ,{
