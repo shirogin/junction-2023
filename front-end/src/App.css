@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+	display: flex;
+}
+/*-------------------------- scrollbar --------------------------*/
+::-webkit-scrollbar {
+	width: 0.5rem;
+	height: 0.5rem;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+    background: hsl(var(--b1));
+} */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: hsl(var(--bc));
+	border-radius: 2rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: hsl(var(--pf));
+}
+@layer base {
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"] {
+		-webkit-appearance: none;
+		margin: 0;
+		-moz-appearance: textfield !important;
+	}
+}

@@ -1,0 +1,49 @@
+import { EyeIcon } from "@heroicons/react/24/solid";
+import { FieldInputProps } from "formik";
+import { useState } from "react";
+// md:max-w-md
+type InputI = {
+	label: string;
+	type: string;
+	placeholder: string;
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	props: FieldInputProps<any>;
+	error?: string;
+	className?: string;
+	inputClassName?: string;
+	[key: string]: unknown;
+};
+export function Input({ label, className = "", inputClassName = "", type: defaultType, placeholder, props, error, ...moreProps }: InputI) {
+	const [inputType, setInputType] = useState(defaultType === "password" ? "password" : defaultType);
+	return (
+		<div className={`form-control w-full  ${className}`}>
+			<label className="label">
+				<span className="label-text font-bold">{label}</span>
+			</label>
+			<div className="relative">
+				<input
+					type={inputType}
+					placeholder={placeholder}
+					className={`input input-bordered w-full ${inputClassName} ${error ? "input-error" : ""} `}
+					{...moreProps}
+					{...props}
+				/>
+				{defaultType === "password" && (
+					<button
+						type="button"
+						className="btn btn-ghost btn-circle btn-sm absolute right-0 top-0 translate-y-1/4 -translate-x-1/4 focus:active:translate-y-1/4 focus:active:-translate-x-1/4  "
+						onClick={() => {
+							setInputType((i) => (i === "password" ? "text" : "password"));
+						}}
+					>
+						<EyeIcon className="w-4 h-4" />
+					</button>
+				)}
+			</div>
+			<label className="label">
+				<span className={`label-text-alt text-error ${error ? "" : "h-0"}`}>{error ? error : undefined}</span>
+			</label>
+		</div>
+	);
+}
