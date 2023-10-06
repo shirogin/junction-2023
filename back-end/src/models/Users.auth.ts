@@ -53,20 +53,12 @@ export const SignIn = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 export const Logout = async (req: MyRequest, res: Response) => {
-	if (req.headers["user-kind"] === "Admin")
-		res.cookie("adminToken", "", {
-			sameSite: "none",
-			secure: true,
-			httpOnly: true,
-			expires: new Date(1),
-		});
-	else
-		res.cookie("token", "", {
-			sameSite: "none",
-			secure: true,
-			httpOnly: true,
-			expires: new Date(1),
-		});
+	res.cookie("token", "", {
+		sameSite: "none",
+		secure: true,
+		httpOnly: true,
+		expires: new Date(1),
+	});
 	const msg = formatString(authLogs.LOGOUT_SUCCESS.message, req.user || { username: "", lastName: "", firstName: "" });
 	authLogger.info(msg, { type: authLogs.LOGOUT_SUCCESS.type });
 	SuccessResponse(res, HttpCodes.OK.code, null, msg);

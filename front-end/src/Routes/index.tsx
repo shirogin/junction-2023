@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { useUser } from "@/hooks";
 import OnBoarding from "@/Pages/OnBoarding";
+import OnBoarding2 from "@/Pages/OnBoarding/OnBoarding2";
 
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
 
@@ -16,8 +17,14 @@ const Welcome = lazy(() => import("@/Pages/protected/Welcome"));
 const Router = () => {
 	const { user } = useUser();
 	return useRoutes([
-		{ index: true, element: <Navigate to="/login" /> },
-
+		{ index: true, element: <Navigate to={user ? "/onboarding" : "/login"} /> },
+		{
+			path: "/onboarding",
+			children: [
+				{ path: "", element: <OnBoarding /> },
+				{ path: "2", element: <OnBoarding2 /> },
+			],
+		},
 		{
 			path: "/app",
 			element: user && user._id ? <Layout /> : <Navigate to="/login" />,
@@ -30,10 +37,7 @@ const Router = () => {
 				{ path: "*", element: <Error404 /> },
 			],
 		},
-		{
-			path: "/onboarding",
-			element: <OnBoarding />,
-		},
+
 		{
 			path: "/login",
 			element: user ? <Navigate to="/app" /> : <LogIn />,
