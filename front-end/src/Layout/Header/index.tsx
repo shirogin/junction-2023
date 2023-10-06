@@ -11,7 +11,7 @@ function Header() {
 	if (!isOpen) return null;
 	return (
 		<>
-			<div className="px-6 lg:px-10 navbar flex justify-between bg-transparent z-10 flex-shrink-0">
+			<div className="px-6 lg:px-10 py-4 navbar flex justify-between bg-transparent z-10 flex-shrink-0">
 				{/* Menu toggle for mobile view or small screen */}
 				{/* <div className="">
 					<label htmlFor="left-sidebar-drawer" className="btn btn-ghost drawer-button lg:hidden">
