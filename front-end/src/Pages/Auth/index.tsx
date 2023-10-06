@@ -9,7 +9,7 @@ const Auth = () => {
 	useEffectOnce(() => {
 		openModal({
 			bodyType: MODAL_BODY_TYPES.FACE_RECOGNITION,
-			title: "FACE RECOGNITION",
+			title: "",
 		});
 		// .then(() => {
 		// Refetch();

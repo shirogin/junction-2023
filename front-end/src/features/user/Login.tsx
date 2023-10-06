@@ -6,7 +6,6 @@ import { useLogOutMutation, useSignInMutation } from "../../app/backend/export/a
 import * as Yup from "yup";
 import { useFormik, Form, FormikProvider } from "formik";
 import { Copyright } from "@/Components/Copyright";
-import useStoreDesk from "@/hooks/useStoreDesk";
 
 const inputs: {
 	name: keyof UserAuthI;
@@ -41,7 +40,6 @@ function Login() {
 	const [AuthMethod, { isLoading }] = useSignInMutation();
 	const [Logout] = useLogOutMutation();
 	const { setUser } = useUser();
-	const { setDesks, removeDesk } = useStoreDesk();
 	const { Notify, Errofy } = useNotification();
 
 	const formik = useFormik<UserAuthI>({
@@ -62,21 +60,18 @@ function Login() {
 				.then((response) => {
 					const user = response.data;
 					console.log(user);
-					if (user && user.kind === "Admin") {
-						setDesks(user.desks);
+					if (user) {
 						setUser(user);
 						Notify("Logged In", "welcome back.");
 					} else {
 						Logout()
 							.unwrap()
 							.then(() => {
-								removeDesk();
 								Errofy("Wrong type of users", { message: "You aren't allowed to enter here with this account" });
 							});
 					}
 				})
 				.catch((err) => {
-					removeDesk();
 					Errofy("Logging In", err);
 				});
 		},
