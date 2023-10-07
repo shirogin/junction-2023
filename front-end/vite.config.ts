@@ -5,7 +5,7 @@ import { VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 import dynamicImport from "vite-plugin-dynamic-import";
 const manifest: Partial<VitePWAOptions> = {
 	registerType: "prompt",
-	includeAssets: ["logo.svg", "favicon.ico", "logo16.png", "logo64.png", "logo192.png", "logo512.png"],
+	includeAssets: ["Logo.svg", "favicon.ico", "logo16.png", "logo64.png", "logo192.png", "logo512.png"],
 	manifest: {
 		id: "DiNAR",
 		short_name: "DiNAR",
@@ -13,34 +13,10 @@ const manifest: Partial<VitePWAOptions> = {
 		description: "DiNAR app to manage Cash and to spend more reasonably.",
 		icons: [
 			{
-				src: "/logo.svg",
+				src: "/Logo.svg",
 				sizes: "96x96 128x128 256x256 512x512",
 				type: "image/svg+xml",
 				purpose: "any maskable",
-			},
-			{
-				src: "/favicon.ico",
-				sizes: "32x32",
-			},
-			{
-				src: "/logo16.png",
-				type: "image/png",
-				sizes: "16x16",
-			},
-			{
-				src: "/logo64.png",
-				type: "image/png",
-				sizes: "64x64",
-			},
-			{
-				src: "/logo192.png",
-				type: "image/png",
-				sizes: "192x192",
-			},
-			{
-				src: "/logo512.png",
-				type: "image/png",
-				sizes: "512x512",
 			},
 		],
 		start_url: "/",

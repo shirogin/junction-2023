@@ -5,6 +5,7 @@ import OnBoarding from "@/Pages/OnBoarding";
 import Home from "@/Pages/Home";
 import Auth from "@/Pages/Auth";
 import AppLayout from "@/Layout/AppLayout";
+import Spending from "@/Pages/Spending";
 
 const Beneficiary = lazy(() => import("@/Pages/Beneficiary"));
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
@@ -31,6 +32,7 @@ const Router = () => {
 					element: <Dashboard />,
 				},
 				{ path: "beneficiary", element: <Beneficiary /> },
+				{ path: "spending", element: <Spending /> },
 				{ path: "*", element: <Error404 /> },
 			],
 		},
