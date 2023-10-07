@@ -4,35 +4,27 @@ import { useState } from "react";
 import Other from "./Other";
 import OwnAccount from "./OwnAccount";
 
-const tabs = [
-	"Other",
-	"Own Account",
-];
-
+const tabs = ["Other", "Own Account"];
 
 const Beneficiary = () => {
 	const [currentTab, setCurrentTab] = useState(0);
-  useNavbar(false)
+	useNavbar(false);
 
-  const renderTabContent = () => {
-    switch (currentTab) {
-      case 0:
-        return (
-          <Other />
-        );
-      case 1:
-        return (
-          <OwnAccount />
-        );
-      default:
-        return null;
-    }
-  };
+	const renderTabContent = () => {
+		switch (currentTab) {
+			case 0:
+				return <Other />;
+			case 1:
+				return <OwnAccount />;
+			default:
+				return null;
+		}
+	};
 
-  return (
-    <>
+	return (
+		<>
 			<div className="w-full h-full flex flex-col justify-center items-center pt-8 gap-12">
-        <h1 className="font-bold text-2xl">Beneficiary</h1>
+				<h1 className="font-bold text-2xl">Beneficiary</h1>
 				<div className="flex w-fit px-6 gap-4">
 					{tabs.map((tab, i) => (
 						<a
@@ -49,13 +41,10 @@ const Beneficiary = () => {
 						</a>
 					))}
 				</div>
-				<div className="flex flex-col w-full h-full">
-          {renderTabContent()}
-        </div>
+				<div className="flex flex-col w-full h-full">{renderTabContent()}</div>
 			</div>
 		</>
-  );
+	);
 };
 
-
-export default Beneficiary
+export default Beneficiary;
