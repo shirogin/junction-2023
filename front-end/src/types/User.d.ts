@@ -32,4 +32,6 @@ declare interface UserI extends Omit<UserAuthI, "password" | "stay"> {
 		Investment?: string;
 		TermDeposit?: string;
 	};
+	createdAt: Date;
+	updatedAt: Date;
 }

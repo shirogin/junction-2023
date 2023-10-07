@@ -31,7 +31,7 @@ function Error500({ backTo = "/", refetch }: { backTo?: string; refetch?: () => 
 
 	return (
 		<div className="hero h-4/5">
-			<div className="hero-content text-primary text-center flex-col gap-10">
+			<div className="hero-content text-white text-center flex-col gap-10">
 				<div className="max-w-md py-40">
 					<FaceFrownIcon className="h-48 w-48 inline-block" />
 					<h1 className="text-5xl  font-bold">{content.title}</h1>
