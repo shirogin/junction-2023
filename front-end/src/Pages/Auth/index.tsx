@@ -1,20 +1,24 @@
 import Page from "@/Components/Page";
 import PinCode from "@/Components/PinCode";
-import { useEffectOnce, useModal } from "@/hooks";
+import { useModal } from "@/hooks";
+import useNavbar from "@/hooks/useNavbar";
+import useNavigation from "@/hooks/useNavigation";
 import { MODAL_BODY_TYPES } from "@/utils/globalConstantUtil";
+import { useEffect } from "react";
 
 const Auth = () => {
 	const { openModal } = useModal();
-
-	useEffectOnce(() => {
+	const { setIsOpen } = useNavbar();
+	const { setIsOpen: setIsNavigation } = useNavigation();
+	useEffect(() => {
 		openModal({
 			bodyType: MODAL_BODY_TYPES.FACE_RECOGNITION,
 			title: "",
 		});
-		// .then(() => {
-		// Refetch();
-		// });
-	});
+		setIsOpen(false);
+		setIsNavigation(false);
+	}, []);
+
 	return (
 		<Page title="Set up PIN Code" subtitle="Enter the PIN Code to secure your account" icon="/public/3d-fluency-padlock 1.png">
 			<div className={``}>

@@ -5,11 +5,9 @@ export { default as useUser } from "./useUser";
 export { default as useLang } from "./useLang";
 export { default as useTheme } from "./useTheme";
 export { default as useNotification } from "./useNotification";
-export { default as useDynamicFilter } from "./useDynamicFilter";
 export { default as useModal } from "./useModal";
 export { default as usePagination } from "./usePagination";
 export { default as useServerNotification } from "./useServerNotification";
-
 
 export const useEffectOnce = (effect: () => void | (() => void)) => {
 	const effectFn = useRef<() => void | (() => void)>(effect);

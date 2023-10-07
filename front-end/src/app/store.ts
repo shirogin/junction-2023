@@ -8,6 +8,7 @@ import language from "@/app/context/language";
 import modal from "@/app/context/modal";
 import lead from "@/app/context/lead";
 import theme from "@/app/context/theme";
+import bgColor from "@/app/context/bgColor";
 import desk from "@/app/context/desk";
 import navbar from "@/app/context/navbar";
 import navigation from "@/app/context/navigation";
@@ -28,6 +29,7 @@ export const store = configureStore({
 		theme,
 		desk,
 		navbar,
+		bgColor,
 		navigation,
 		serverNotification,
 	},

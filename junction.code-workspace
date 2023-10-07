@@ -11,6 +11,9 @@
 		{
 			"path": "forcast-investment-stocks",
 			"name": "Forecast AI for stock investment"
+		},
+		{
+			"path": "User-recomandation-savings"
 		}
 	],
 	"settings": {

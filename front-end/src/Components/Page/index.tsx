@@ -14,7 +14,7 @@ const Page: React.FC<Props> = ({ title, icon, subtitle, intro, children }) => {
 				<div className="hidden md:block">{intro}</div>
 				<div className="md:py-24  flex flex-col gap-6 h-full justify-center mt-12">
 					<Logo />
-					<div className="flex mt-12 gap-4">
+					<div className="flex gap-4">
 						<h1 className="text-2xl font-bold">{title} </h1>
 						<div>
 							<img src={`${icon}`} />
