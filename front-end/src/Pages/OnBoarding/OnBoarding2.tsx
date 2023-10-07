@@ -1,10 +1,18 @@
 import Logo from "@/Components/Logo";
 import useNavbar from "@/hooks/useNavbar";
 import { ArrowRight } from "iconsax-react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const OnBoarding2 = () => {
-	useNavbar(false);
+	const { setIsOpen } = useNavbar();
+	useEffect(() => {
+		setIsOpen(false);
+		return () => {
+			setIsOpen(false);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<div className="min-h-screen flex flex-col w-full justify-center">
 			<div className="md:card mx-auto max-w-2xl  md:shadow-xl px-4 md:my-20 w-full h-full md:bg-base-100 ">

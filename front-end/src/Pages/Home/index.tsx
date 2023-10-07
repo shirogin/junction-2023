@@ -1,6 +1,7 @@
 import Panel from "@/Components/Panel";
+import useNavbar from "@/hooks/useNavbar";
 import DZD from "@/utils/Currency";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const accountsTypes = [
 	"Investment",
 	<div className="flex gap-2">
@@ -30,6 +31,14 @@ const accounts = [
 ];
 export default function Home() {
 	const [currentAccount, setCurrentAccount] = useState(1);
+	const { setIsOpen } = useNavbar();
+	useEffect(() => {
+		setIsOpen(true);
+		return () => {
+			setIsOpen(false);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<>

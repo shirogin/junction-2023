@@ -2,7 +2,7 @@ import Logo from "@/Components/Logo";
 import { ArrowRight, ArrowRight2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useNavbar from "@/hooks/useNavbar";
 const onBoarding1 = {
 		hidden: { x: 0, y: 0 },
@@ -13,7 +13,14 @@ const onBoarding1 = {
 		visible: { x: 0, y: 0 },
 	};
 const OnBoarding = () => {
-	useNavbar(false);
+	const { setIsOpen } = useNavbar();
+	useEffect(() => {
+		setIsOpen(false);
+		return () => {
+			setIsOpen(false);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	const [onBoarding, setOnBoarding] = useState("hidden");
 	return (
 		<div className="h-screen flex flex-col w-full justify-center ">

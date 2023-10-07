@@ -19,7 +19,7 @@ const navs = [
 	{
 		name: "Cards",
 		icon: <Card className="w-8 h-8" />,
-		path: "/app/cards",
+		path: "/app/beneficiary",
 	},
 	{
 		name: "Home",
@@ -38,8 +38,8 @@ function Navigation() {
 	return (
 		<div className="bg-gray-200">
 			<ul className="px-6 lg:px-10 py-2 navbar flex justify-between z-100 bg-base-100 flex-shrink-0 rounded-[30px] h-24 -mb-6 shadow-lg text-black">
-				{navs.map((elm) => (
-					<li className="mb-auto mt-3" title={elm.name}>
+				{navs.map((elm, i) => (
+					<li key={i} className="mb-auto mt-3" title={elm.name}>
 						<Link to={elm.path}>{elm.icon}</Link>
 					</li>
 				))}

@@ -10,6 +10,7 @@ import { Input } from "../../Components/Input";
 import { Profile } from "iconsax-react";
 import Page from "@/Components/Page";
 import useNavbar from "@/hooks/useNavbar";
+import { useEffect } from "react";
 
 const inputs: InputRequiredFields<UserAuthI>[] = [
 	{
@@ -41,7 +42,14 @@ function Login() {
 	const [Logout] = useLogOutMutation();
 	const { setUser } = useUser();
 	const { Notify, Errofy } = useNotification();
-	useNavbar(false);
+	const { setIsOpen } = useNavbar();
+	useEffect(() => {
+		setIsOpen(false);
+		return () => {
+			setIsOpen(false);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const formik = useFormik<UserAuthI>({
 		initialValues: {
