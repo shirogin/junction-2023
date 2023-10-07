@@ -14,7 +14,7 @@ const VerificationProgressBar = () => {
   }, []);
 
   return (
-    <div className="relative ml-[5.5rem] mt-4 w-[14rem] h-[0.5rem] bg-slate-200 rounded-full">
+    <div className="relative ml-[3.5rem] mt-4 w-[14rem] h-[0.5rem] bg-slate-200 rounded-full">
       <motion.div
         initial={{ width: "1%" }}
         animate={controls}
