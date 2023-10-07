@@ -19,12 +19,13 @@ const Dashboard = lazy(() => import("@/Pages/protected/Dashboard"));
 const Router = () => {
 	const { user } = useUser();
 	return useRoutes([
-		{ index: true, element: <Navigate to={user ? "/app" : "/onboarding"} /> },
+		{ index: true, element: <Navigate to={user ? "/app/home" : "/onboarding"} /> },
 		{
 			path: "app",
 			element: user ? <AppLayout /> : <Navigate to="/login" />,
 			children: [
-				{ path: "", element: <Home /> },
+				{ path: "", element: <Navigate to={"/app/home"} /> },
+				{ path: "home", element: <Home /> },
 				{
 					path: "dashboard", // the url
 					element: <Dashboard />,
