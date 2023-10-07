@@ -1,18 +1,30 @@
 // import DZD from "@/utils/Currency";
+import useNavbar from "@/hooks/useNavbar";
 import { useState } from "react";
+import Other from "./Other";
+import OwnAccount from "./OwnAccount";
 
-const tabs = [
-	"Other",
-	"Own Account",
-];
-
+const tabs = ["Other", "Own Account"];
 
 const Beneficiary = () => {
 	const [currentTab, setCurrentTab] = useState(0);
+	useNavbar(false);
 
-  return (
-    <>
-			<div className="w-f flex flex-col justify-center items-center pt-8 ">
+	const renderTabContent = () => {
+		switch (currentTab) {
+			case 0:
+				return <Other />;
+			case 1:
+				return <OwnAccount />;
+			default:
+				return null;
+		}
+	};
+
+	return (
+		<>
+			<div className="w-full h-full flex flex-col justify-center items-center pt-8 gap-12">
+				<h1 className="font-bold text-2xl">Beneficiary</h1>
 				<div className="flex w-fit px-6 gap-4">
 					{tabs.map((tab, i) => (
 						<a
@@ -29,14 +41,10 @@ const Beneficiary = () => {
 						</a>
 					))}
 				</div>
-				<div className="flex flex-col w-full px-6 mt-12">
-					<h2 className="text-2xl font-semibold text-center">Balance</h2>
-					{/* <p className="text-4xl font-semibold text-center text-white mt-2">{DZD.EN.format(tabs[currentTab])}</p> */}
-				</div>
+				<div className="flex flex-col w-full h-full">{renderTabContent()}</div>
 			</div>
 		</>
-  );
+	);
 };
 
-
-export default Beneficiary
+export default Beneficiary;

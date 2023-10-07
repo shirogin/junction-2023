@@ -14,12 +14,12 @@ const navs = [
 	{
 		name: "Transactions",
 		icon: <ArrowSwapVertical className="w-8 h-8" />,
-		path: "/app/transactions",
+		path: "/app/spending",
 	},
 	{
 		name: "Cards",
 		icon: <Card className="w-8 h-8" />,
-		path: "/app/cards",
+		path: "/app/beneficiary",
 	},
 	{
 		name: "Home",

@@ -11,9 +11,7 @@ export default function useNavbar(enable?: boolean) {
 	}
 	useEffect(() => {
 		setIsOpen(enable);
-		return () => {
-			setIsOpen(false);
-		};
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [enable]);
 	return {
