@@ -8,27 +8,27 @@ import { Link } from "react-router-dom";
 const navs = [
 	{
 		name: "Home",
-		icon: <Home className="w-8 h-8" />,
+		icon: <Home className="w-6 h-6" />,
 		path: "/app/home",
 	},
 	{
 		name: "Transactions",
-		icon: <ArrowSwapVertical className="w-8 h-8" />,
+		icon: <ArrowSwapVertical className="w-6 h-6" />,
 		path: "/app/spending",
 	},
 	{
 		name: "Cards",
-		icon: <Card className="w-8 h-8" />,
+		icon: <Card className="w-6 h-6" />,
 		path: "/app/beneficiary",
 	},
 	{
 		name: "Home",
-		icon: <MessageNotif className="w-8 h-8" />,
+		icon: <MessageNotif className="w-6 h-6" />,
 		path: "/app/chat",
 	},
 	{
 		name: "Home",
-		icon: <Setting className="w-8 h-8" />,
+		icon: <Setting className="w-6 h-6" />,
 		path: "/app/settings",
 	},
 ];

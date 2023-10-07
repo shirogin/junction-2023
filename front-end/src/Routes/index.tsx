@@ -37,6 +37,14 @@ const Router = () => {
 				{ path: "beneficiary", element: <Beneficiary /> },
 				{ path: "beneficiary/confirm", element: <Confirm /> },
 				{ path: "chat", element: <Chat /> },
+				{
+					path: "auth",
+					element: <Auth />,
+				},
+				{
+					path: "auth-verification",
+					element: <AuthVerification />,
+				},
 				{ path: "spending", element: <Spending /> },
 				{ path: "settings", element: <Settings /> },
 				{ path: "*", element: <Error404 /> },
@@ -50,18 +58,12 @@ const Router = () => {
 					path: "onboarding",
 					element: <OnBoarding />,
 				},
-				{
-					path: "auth",
-					element: <Auth />,
-				},
+
 				{
 					path: "login",
-					element: user ? <Navigate to="/app" /> : <LogIn />,
+					element: user ? <Navigate to="/app/auth" /> : <LogIn />,
 				},
-				{
-					path: "authverification",
-					element: user ? <Navigate to="/app" /> : <AuthVerification />,
-				},
+
 				{
 					path: "logout",
 					element: user ? <Logout /> : <Navigate to="/login" />,

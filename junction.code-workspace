@@ -9,8 +9,8 @@
 			"name": "Front end"
 		},
 		{
-			"path": "admin-end",
-			"name": "Admin end"
+			"path": "forcast-investment-stocks",
+			"name": "Forecast AI for stock investment"
 		}
 	],
 	"settings": {

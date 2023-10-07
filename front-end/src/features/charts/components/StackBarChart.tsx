@@ -1,56 +1,60 @@
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import TitleCard from "@/Components/Cards/TitleCard";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
+ChartJS.defaults.color = "#ffffff";
+ChartJS.defaults.borderColor = "#ffffff29";
 function StackBarChart() {
-    const options = {
-        responsive: true,
-        scales: {
-            x: {
-                stacked: true,
-            },
-            y: {
-                stacked: true,
-            },
-        },
-    };
+	const options = {
+		responsive: true,
 
-    const labels = ["January", "February", "March", "April", "May", "June", "July"];
+		title: {
+			color: "white",
+		},
 
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: "Store 1",
-                data: labels.map(() => {
-                    return Math.random() * 1000 + 500;
-                }),
-                backgroundColor: "rgba(255, 99, 132, 1)",
-            },
-            {
-                label: "Store 2",
-                data: labels.map(() => {
-                    return Math.random() * 1000 + 500;
-                }),
-                backgroundColor: "rgba(53, 162, 235, 1)",
-            },
-            {
-                label: "Store 3",
-                data: labels.map(() => {
-                    return Math.random() * 1000 + 500;
-                }),
-                backgroundColor: "rgba(235, 162, 235, 1)",
-            },
-        ],
-    };
+		plugins: {
+			legend: {
+				position: "bottom",
+				color: "white",
+				useBorderRadius: false,
+				labels: {
+					// This more specific font property overrides the global property
+					color: "#ffffff",
+					font: {
+						size: 14,
+					},
+				},
+			},
+		},
+	};
 
-    return (
-        <TitleCard title={"Sales"} topMargin="mt-2">
-            <Bar options={options} data={data} />
-        </TitleCard>
-    );
+	const labels = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+
+	const data = {
+		labels,
+		datasets: [
+			{
+				label: "Expenses",
+				data: labels.map(() => {
+					return Math.random() * 1000 + 500;
+				}),
+				backgroundColor: "rgba(11, 28, 63, .7)",
+				width: 5,
+				borderRadius: 20, // Adjust the value for rounded bars
+			},
+			{
+				label: "Income",
+				data: labels.map(() => {
+					return Math.random() * 1000 + 500;
+				}),
+				backgroundColor: "rgba(255, 255, 255, 1)",
+				borderRadius: 20, // Adjust the value for rounded bars
+			},
+		],
+	};
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	return <Bar options={options} data={data} />;
 }
 
 export default StackBarChart;
