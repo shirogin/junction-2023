@@ -49,12 +49,12 @@ const Account: React.FC<AccountProps> = ({
         <div className="flex flex-col mt-4 gap-4">
             <h1 className="text-2xl font-bold">{title} </h1>
             <p className="">{subtitle}</p>
-            {AccountsType.map((type) => (
+            {AccountsType.map((type, i) => (
                 <Card
                     key={type.title}
                     title={type.title}
                     icon={type.icon}
-                    color={type.color}
+                    i={i+1}
                     sub={type.sub}
                     selected={selectedAccount === type.title}
                     onSelect={() => handleSelect(type.title)}

@@ -11,20 +11,20 @@ type CardProps = {
   title: string;
   sub: string;
   icon: string;
-  color: string;
+  i: number;
   selected: boolean;
   disabled: boolean;
   onSelect: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ title, sub, icon, color, selected,disabled, onSelect }) => {
+const Card: React.FC<CardProps> = ({ i, title, sub, icon, selected,disabled, onSelect }) => {
   return (
       <div className={`card shadow-xl`} onClick={onSelect}>
           <div className=" card-body flex flex-row items-center p-4 justify-between">
             <div className="flex gap-4">
 
               <div className="avatar">
-                  <div className={`w-20 h-20 p-8 rounded-full bg-[${color}]`}>
+                  <div className={`w-20 h-20 p-8 rounded-full bg-custom${i}`}>
                       <img src={icon} alt={title} />
                   </div>
               </div>

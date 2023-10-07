@@ -8,6 +8,7 @@ import AppLayout from "@/Layout/AppLayout";
 import Spending from "@/Pages/Spending";
 import Confirm from "@/Pages/Beneficiary/Confirm";
 import Chat from "@/Pages/Chat";
+import Settings from "@/Pages/Settings";
 
 const Beneficiary = lazy(() => import("@/Pages/Beneficiary"));
 const Error404 = lazy(() => import("@/Pages/Errors/Error404"));
@@ -34,9 +35,10 @@ const Router = () => {
 					element: <Dashboard />,
 				},
 				{ path: "beneficiary", element: <Beneficiary /> },
-				{ path: "confirm", element: <Confirm /> },
+				{ path: "beneficiary/confirm", element: <Confirm /> },
 				{ path: "chat", element: <Chat /> },
 				{ path: "spending", element: <Spending /> },
+				{ path: "settings", element: <Settings /> },
 				{ path: "*", element: <Error404 /> },
 			],
 		},

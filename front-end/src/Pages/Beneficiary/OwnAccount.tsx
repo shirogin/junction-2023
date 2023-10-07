@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Account from "./Account";
 import { useNavigate } from "react-router";
+// import Confirm from "./Confirm";
 
 const OwnAccount: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -23,7 +24,8 @@ const OwnAccount: React.FC = () => {
           setSourceAccount(null);
           setTargetAccount(null);
           setStep(1);
-          navigate("/app/confirm")
+          navigate("/app/beneficiary/confirm")
+          // <Confirm />
       }
   };
 

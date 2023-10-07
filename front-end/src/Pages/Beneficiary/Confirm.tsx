@@ -34,7 +34,7 @@ const Confirm = () => {
         }
     };
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center pt-8 gap-12">
+        <div className="w-full h-full  flex flex-col justify-center items-center pt-8 gap-12">
             <h1 className="font-bold text-2xl">Beneficiary</h1>
             {showTransaction && (
                 <motion.div
