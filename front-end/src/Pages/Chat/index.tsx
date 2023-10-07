@@ -30,6 +30,11 @@ export default function Chat() {
 	const [message, setMessage] = useState<string>("");
 	useEffect(() => {
 		setIsOpen(true);
+		// scroll to the bottom of the chat
+		const chat = document.querySelector(".flex.flex-col.pb-24.overflow-y-auto.no-scrollbar");
+		if (chat) {
+			chat.scrollTop = chat.scrollHeight;
+		}
 		return () => {
 			setIsOpen(false);
 		};
@@ -48,7 +53,7 @@ export default function Chat() {
 			<div className="flex absolute bottom-4 left-0 w-full px-6 gap-4">
 				<div className="w-full flex relative text-black">
 					<input
-						className="input rounded-full w-full bordered border-4 pr-6"
+						className="input rounded-full w-full bordered border-4 pr-12"
 						placeholder="Type a message..."
 						onChange={(e) => {
 							setMessage(e.target.value);
