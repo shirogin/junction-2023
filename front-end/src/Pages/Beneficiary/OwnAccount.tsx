@@ -22,8 +22,8 @@ const OwnAccount: React.FC = () => {
       if (sourceAccount && targetAccount) {
           setSourceAccount(null);
           setTargetAccount(null);
-          // setStep(1);
-          navigate("/")
+          setStep(1);
+          navigate("/app/confirm")
       }
   };
 
@@ -35,8 +35,8 @@ const OwnAccount: React.FC = () => {
                       <Account
                           title={"Transfer from"}
                           subtitle={"Select the account you want to send money from"}
-                          next={<button className={"btn btn-primary"} onClick={handleNext}>Next</button>}
-                          previous={<button className={"btn btn-outline"} onClick={handleCancel}>Cancel</button>}
+                          next={<button className={"btn btn-primary w-32"} onClick={handleNext}>Next</button>}
+                          previous={<button className={"btn btn-outline w-32"} onClick={handleCancel}>Cancel</button>}
                           selectedAccount={sourceAccount}
                           onSelectAccount={(account) => setSourceAccount(account)}
                       />
@@ -45,12 +45,14 @@ const OwnAccount: React.FC = () => {
                       <Account
                           title={"Transfer to"}
                           subtitle={"Select the account you want to receive money on"}
-                          next={<button className={"btn btn-primary"} onClick={handleConfirm}>Confirm</button>}
-                          previous={ <button className={"btn btn-outline"} onClick={handlePrevious}>
+                          next={<button className={"btn btn-primary w-32"} onClick={handleConfirm}>Confirm</button>}
+                          previous={ <button className={"btn btn-outline w-32"} onClick={handlePrevious}>
                           Previous
                       </button>}
                           selectedAccount={targetAccount}
                           onSelectAccount={(account) => setTargetAccount(account)}
+                          sourceAccount={sourceAccount}
+                      
                       />
                   )}
               </div>
