@@ -1,6 +1,6 @@
 // import DZD from "@/utils/Currency";
 import useNavbar from "@/hooks/useNavbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Other from "./Other";
 import OwnAccount from "./OwnAccount";
 
@@ -8,7 +8,14 @@ const tabs = ["Other", "Own Account"];
 
 const Beneficiary = () => {
 	const [currentTab, setCurrentTab] = useState(0);
-	useNavbar(false);
+	const { setIsOpen } = useNavbar();
+	useEffect(() => {
+		setIsOpen(true);
+		return () => {
+			setIsOpen(false);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const renderTabContent = () => {
 		switch (currentTab) {
